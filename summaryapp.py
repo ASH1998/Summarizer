@@ -39,7 +39,7 @@ def summarize():
 
 if __name__ == '__main__':
 	print("Starting web service")
-	app.run(host='localhost', port="13000", debug=True)
+	app.run(host='localhost', port="45000", debug=True)
 
 
 
