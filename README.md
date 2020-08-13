@@ -3,7 +3,6 @@ Deploying BERT Summarizer with flask : Semantic UI
 
 This is a Bert Summarizer WebApp made using Semantic UI.
 
-For unknown time, you can test this from : http://13.126.138.135/summarize
 
 ### Features  : 
 - Summarize in 0.3 Ratio of original text
