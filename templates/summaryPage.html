@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html style="height:100%">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Contract Q/A</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.3/dist/semantic.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <script
+        src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous">
+    </script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.3/dist/semantic.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    <style>
+        body{
+            background-color: rgb(28, 28, 28);
+        }
+    </style>
+</head>
+<body style="height:100%">
+    <br>
+    <h1 style="color: lightgray; align-items: center; text-align: center;">Clause Summarizer</h1>
+    
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div style="height:10%; display:flex; align-items: center; justify-content: center">
+                    {% for category, message in messages %}
+                        {% if category == error%}
+                            <h3 style="color:red">{{ message }}</h3>
+                        {% else %}
+                            <h3 style="color:red">{{ message }}</h3>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+    
+    <div style="height:60%; display: flex; align-items: center; justify-content: center">
+        <form action="summarize" method="POST">
+            <div class="ui input">
+                <textarea rows="20" cols="150" name="context" placeholder="Input Clause(min 5 sentences)..." style="margin:10px; ">{{context}}</textarea>
+            </div><br><br>
+
+            <div class="ui inverted segment" style=" text-align: center;">
+            <button class="ui inverted blue button" type="submit" name="btn" value="ratio">Summarize in '0.3 Ratio'</button>
+            <button class="ui inverted teal button" type="submit" name="btn" value="sentence">Summarize in '5 Sentences'</button>
+            </div>
+
+
+        </form>
+    </div>
+    <div style="width: 50%; height:50%; display: block; justify-content: center; margin: auto; text-align: center">
+        {% if answer %}
+            <br>
+            
+            <div class="ui fluid card">
+                <div class="content">
+                    <div class="header">Summary</div>
+                    <div class="description">
+                    <p>{{answer}}</p>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+    <script>
+        $('.ui.accordion')
+        .accordion()
+        ;
+    </script>
+</body>
+</html>
